@@ -1,5 +1,11 @@
 from random import choice
 
+def get_step() -> int:
+    """Define direction and how far to go in that direction"""
+    direction= choice([1, -1])   
+    distance= choice([0, 1, 2, 3, 4, 5, 6, 7, 8])
+    return direction* distance
+
 class RandomWalk():
     """This class generates random walks"""
 
@@ -13,17 +19,11 @@ class RandomWalk():
 
     def walk(self) -> None:
         """Walk through the points"""
-
         #Walk ultil all values = points number
         while len(self.x_values) < self.points:
-            #Define direction and how far to go in that direction
-            direction_x= choice([1, -1])    #Right or left
-            distance_x = choice([0, 1, 2, 3, 4])
-            step_x = direction_x* distance_x
-
-            direction_y= choice([1, -1])    #Up or down
-            distance_y = choice([0, 1, 2, 3, 4])
-            step_y = direction_y* distance_y
+            #Get X and Y step values
+            step_x = get_step()
+            step_y = get_step()
 
             #0 it is not a direcion
             if step_x == 0 and step_y == 0:
